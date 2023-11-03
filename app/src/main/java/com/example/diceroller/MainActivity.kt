@@ -86,5 +86,12 @@ fun DiceWithButtonAndImage(modifier: Modifier = Modifier) {
         ) {
             Text(text = stringResource(R.string.roll), fontSize = 24.sp)
         }
+        Spacer(modifier = Modifier.height(16.dp))
+        ResultText(result = result)
     }
+}
+
+@Composable
+fun ResultText(result: Int) {
+    Text(text = result.toString(), fontSize = 24.sp)
 }
