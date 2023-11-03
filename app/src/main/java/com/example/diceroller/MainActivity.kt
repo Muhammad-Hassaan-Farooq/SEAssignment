@@ -69,7 +69,7 @@ fun DiceRollerApp() {
     }
 
     if (onHome) {
-        WelcomePage(onbuttonclick = onbuttonclick())
+        WelcomePage(onbuttonclick = { onbuttonclick() })
     } else {
         DiceWithButtonAndImage(modifier = Modifier
             .fillMaxSize()
