@@ -61,10 +61,23 @@ class MainActivity : ComponentActivity() {
 @Preview
 @Composable
 fun DiceRollerApp() {
-    DiceWithButtonAndImage(modifier = Modifier
-        .fillMaxSize()
-        .wrapContentSize(Alignment.Center)
-    )
+
+    var onHome by remember { mutableStateOf(true) }
+
+    fun onbuttonclick() {
+        onHome = false
+    }
+
+    if (onHome) {
+        WelcomePage(onbuttonclick = onbuttonclick())
+    } else {
+        DiceWithButtonAndImage(modifier = Modifier
+            .fillMaxSize()
+            .wrapContentSize(Alignment.Center)
+        )
+    }
+
+
 }
 
 @Composable
