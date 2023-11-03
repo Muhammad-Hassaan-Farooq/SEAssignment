@@ -61,10 +61,23 @@ class MainActivity : ComponentActivity() {
 @Preview
 @Composable
 fun DiceRollerApp() {
-    DiceWithButtonAndImage(modifier = Modifier
-        .fillMaxSize()
-        .wrapContentSize(Alignment.Center)
-    )
+
+    var onHome by remember { mutableStateOf(true) }
+
+    fun onbuttonclick() {
+        onHome = false
+    }
+
+    if (onHome) {
+        WelcomePage(onbuttonclick = { onbuttonclick() }, modifier = Modifier.fillMaxSize())
+    } else {
+        DiceWithButtonAndImage(modifier = Modifier
+            .fillMaxSize()
+            .wrapContentSize(Alignment.Center)
+        )
+    }
+
+
 }
 
 @Composable
@@ -86,5 +99,12 @@ fun DiceWithButtonAndImage(modifier: Modifier = Modifier) {
         ) {
             Text(text = stringResource(R.string.roll), fontSize = 24.sp)
         }
+        Spacer(modifier = Modifier.height(16.dp))
+        ResultText(result = result)
     }
+}
+
+@Composable
+fun ResultText(result: Int) {
+    Text(text = result.toString(), fontSize = 24.sp)
 }
